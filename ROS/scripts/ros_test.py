@@ -9,7 +9,7 @@ from datetime import datetime
 from espeak import espeak
 from moveo_moveit.msg import ArmJointState
 
-fixated_object_label = None
+fixated_object_label = 'a'
 gripper = {'open': 0, 'a': 80, 'b': 40}
 upright = [0, 0, 0, 0, 0, 0]
 
