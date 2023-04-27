@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 import rospy
 from std_msgs.msg import String
 import sys
@@ -6,7 +7,7 @@ from msgpack import loads
 import time
 import pyttsx
 from datetime import datetime
-from espeak import espeak
+#from espeak import espeak
 from moveo_moveit.msg import ArmJointState
 
 fixated_object_label = 'a'
@@ -50,11 +51,11 @@ def publish_detected_object():
                 goal.position5 = i[4]
                 goal.position6 = i[5]
                 pub.publish(goal)
-                rospy.sleep(10)
+                rospy.sleep(13)
 
-        espeak.synth(fixated_object_label)
-        while espeak.is_playing():
-            pass
+        # espeak.synth(fixated_object_label)
+        # while espeak.is_playing():
+        #     pass
 
         # rate.sleep()
 
