@@ -94,11 +94,11 @@ void setup() {
   //nh.advertise(steps);
 
   // Configure each stepper
-  joint1.setMaxSpeed(100000);
-  joint2.setMaxSpeed(100000);
-  joint3.setMaxSpeed(100000);
-  joint4.setMaxSpeed(100000);
-  joint5.setMaxSpeed(100000);
+  joint1.setMaxSpeed(1000);
+  joint2.setMaxSpeed(1000);
+  joint3.setMaxSpeed(1000);
+  joint4.setMaxSpeed(1000);
+  joint5.setMaxSpeed(1000);
 
   // Then give them to MultiStepper to manage
   steppers.addStepper(joint1);

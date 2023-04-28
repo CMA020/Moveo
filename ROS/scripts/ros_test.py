@@ -3,9 +3,9 @@ import rospy
 from std_msgs.msg import String
 import sys
 import zmq
-from msgpack import loads
+#from msgpack import loads
 import time
-import pyttsx
+#import pyttsx
 from datetime import datetime
 #from espeak import espeak
 from moveo_moveit.msg import ArmJointState
@@ -15,19 +15,16 @@ gripper = {'open': 0, 'a': 80, 'b': 40}
 upright = [0, 0, 0, 0, 0, 0]
 
 # predefined movements for pick and place of an apple and banana
-apple_pick = [0, 1750, 0, -1400, -3300, gripper['apple']]
-apple_move = [1750, -1753, 0, 1400, 3300, gripper['apple']]
+apple_pick = [0, 1750, 0, -1400, -3300, gripper['a']]
+apple_move = [1750, -1753, 0, 1400, 3300, gripper['a']]
 apple_place = [-1750, 1750, 0, 1400, -3300, gripper['open']]
 
-banana_pick = [0, -2243, -24410, 14, -400, gripper['banana']]
-banana_move = [0, -1043, -17410, 14, -3300, gripper['banana']]
+banana_pick = [0, -2243, -24410, 14, -400, gripper['b']]
+banana_move = [0, -1043, -17410, 14, -3300, gripper['b']]
 banana_place = [4600, -2400, -20410, -91, -400, gripper['open']]
 
-object_trajectories = {"apple": [upright, apple_pick, apple_move, apple_place, upright],
-                       "banana": [upright, banana_pick, banana_move, banana_place, upright]}
-
-
-
+object_trajectories = {"a": [upright, apple_pick, apple_move, apple_place, upright],
+                       "b": [upright, banana_pick, banana_move, banana_place, upright]}
 
 # publish detected object to a ros topic
 def publish_detected_object():
@@ -52,14 +49,6 @@ def publish_detected_object():
                 goal.position6 = i[5]
                 pub.publish(goal)
                 rospy.sleep(13)
-
-        # espeak.synth(fixated_object_label)
-        # while espeak.is_playing():
-        #     pass
-
-        # rate.sleep()
-
-
 if __name__ == '__main__':
     try:
         publish_detected_object()
